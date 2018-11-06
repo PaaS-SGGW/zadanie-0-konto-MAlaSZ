@@ -1,0 +1,121 @@
+.my-uppercase {
+  text-transform: uppercase;
+}
+.my-bold {
+  font-weight: 700;
+}
+
+.my-pagination {
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+html,body {
+  font-family: Roboto, serif;
+}
+
+.my-center{
+    margin-left: auto!important;
+    margin-right: auto!important;
+    float: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Roboto",Arial,sans-serif;
+    font-weight: 700;
+}
+
+ul {list-style-type: none;}
+
+/* Month header */
+#DateSelector {
+  margin-top: 16px;
+  font-weight: 800;
+
+}
+.month {
+    padding: 50px 25px;
+    background: #999;
+    color: white;
+    font-size: 16px;
+
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+/* Previous button inside month header */
+.month .prev {
+    float: left;
+
+}
+
+/* Next button */
+.month .next {
+    float: right;
+    padding-top: 10px;
+}
+
+/* Weekdays (Mon-Sun) */
+.weekdays {
+    margin: 0;
+    padding: 10px 0;
+    background-color:#ddd;
+}
+
+.weekdays li {
+    display: inline-block;
+    width: 13%;
+    color: #666;
+    text-align: center;
+}
+
+/* Days (1-31) */
+.days {
+    padding: 10px 0;
+    background: #eee;
+    margin: 0;
+}
+
+.days li {
+    list-style-type: none;
+    display: inline-block;
+    width: 14.25%;
+    text-align: center;
+    margin-bottom: 5px;
+    font-size:12px;
+    color:#777;
+}
+
+/* Highlight the "current" day */
+.days .active {
+    padding: 5px;
+    background: #1abc9c;
+    color: white !important
+}
+
+
+@media screen and (max-width: 699px) {
+    .visibility-large{
+        display:none!important;
+        visibility: collapse;
+    }
+    .visibility-small {
+        visibility: visible;
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .visibility-large{
+        visibility: visible;
+    }
+    .visibility-small {
+        display:none!important;
+        visibility: collapse;
+    }
+}
+
+.my-pointer {
+    cursor: pointer;
+    -moz-user-select: none;
+}
+

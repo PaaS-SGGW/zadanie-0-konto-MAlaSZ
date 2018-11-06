@@ -1,0 +1,74 @@
+.my-uppercase {
+  text-transform: uppercase;
+}
+.my-bold {
+  font-weight: 700;
+}
+
+.my-pagination {
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+html,body {
+  font-family: Roboto, serif;
+}
+
+.my-center{
+    margin-left: auto!important;
+    margin-right: auto!important;
+    float: none;
+    transition: width 0.5s;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Roboto",Arial,sans-serif;
+    font-weight: 700;
+}
+
+ul {list-style-type: none;}
+
+*:focus{
+    border: none;
+    outline: none!important;
+}
+
+.my-margin{
+    transition: margin 0.5s;
+}
+@media screen and (min-width: 600px ) and ( max-width: 835px){
+    .my-list-item {
+        margin-right:100px;
+    }
+}
+
+@media screen and (max-width: 685px){
+    .my-margin {
+        margin-left: 0px;
+        margin-right:0px;
+    }
+    .my-button {
+        min-width: 150px!important;
+    }
+    .my-sidebar {
+        display: none;
+        z-index: 1;
+        position: fixed!important;
+    }
+}
+
+@media screen and (min-width: 686px){
+
+    .my-margin {
+        margin-left: 100px; margin-right:100px;
+    }
+    .my-button {
+        min-width: 150px;
+    }
+    .my-sidebar {
+        display: none;
+        z-index: 1;
+        position: absolute!important;
+    }
+}
