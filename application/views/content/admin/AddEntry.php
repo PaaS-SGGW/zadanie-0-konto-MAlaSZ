@@ -87,8 +87,8 @@ session_start();
                 Title:$('#PostTitle').val(),
                 ImageId:$('#PostImage').val(),
                 Content: quill.root.innerHTML,
-                Language: $('#PostLanguage').val(),
-                Summary: $('#PostSummary').val()
+                Summary: $('#PostSummary').val(),
+                Language: $('#PostLanguage').val()
             }
         });
         request.done(function (response) {

@@ -8,7 +8,7 @@ session_start();
 function GetUserName($Id) {
     global $DB_CONFIG;
     $db = new PDO('mysql:host=' . $DB_CONFIG['host'] . ';dbname=' . $DB_CONFIG['database'].';charset=utf8', $DB_CONFIG['username'], $DB_CONFIG['password']);
-    $Query = $db->prepare("SELECT * from users WHERE id = ?");
+    $Query = $db->prepare("SELECT * from Users WHERE id = ?");
     $Query->execute(array($Id));
 
     $User = $Query->fetchAll(PDO::FETCH_GROUP | PDO::FETCH_ASSOC);

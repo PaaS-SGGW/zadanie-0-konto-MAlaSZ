@@ -4,7 +4,9 @@ require_once Router::$Config['Language'];
 require_once Router::$Controllers['Post']['List'];
 require_once Router::$Controllers['User']['Read'];
 require_once Router::$Controllers['Image']['List'];
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 $Posts = GetPostList();
 for($i=0; $i < count($Posts); $i++)

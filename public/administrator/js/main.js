@@ -47,7 +47,7 @@ function Login() {
       var request = $.ajax({
           type: "POST",
           url:"./login.php",
-          data: { type:'Login', login: $("#loginInput").val(), password: CryptoJS.SHA512($('#passwordInput').val()).toString() }
+          data: { type:'Login', login: $("#loginInput").val(), password:$('#passwordInput').val().toString() }
       });
 
      request.done(
@@ -57,7 +57,6 @@ function Login() {
              else window.location.reload();
          }
      );
-    
 }
 
 function ShowError(Title, Content) {

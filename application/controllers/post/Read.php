@@ -10,7 +10,7 @@ function GetPosts()
     global $DB_CONFIG;
 
     $db = new PDO('mysql:host=' . $DB_CONFIG['host'] . ';dbname=' . $DB_CONFIG['database'].';charset=utf8', $DB_CONFIG['username'], $DB_CONFIG['password']);
-    $Query = $db->prepare("SELECT * from posts");
+    $Query = $db->prepare("SELECT * from Posts");
     $Query->execute();
 
     $PostsList = $Query->fetchAll(PDO::FETCH_GROUP | PDO::FETCH_ASSOC);

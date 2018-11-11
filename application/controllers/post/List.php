@@ -8,11 +8,13 @@ require_once Router::$Config['Language'];
 function GetPostList()
 {
     global $DB_CONFIG;
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
 
     $UserId = (get_object_vars($_SESSION['User'])[Id]);
     $db = new PDO('mysql:host=' . $DB_CONFIG['host'] . ';dbname=' . $DB_CONFIG['database'].';charset=utf8', $DB_CONFIG['username'], $DB_CONFIG['password']);
-    $Query = $db->prepare("SELECT * from posts WHERE UserId = ?");
+    $Query = $db->prepare("SELECT * from Posts WHERE UserId = ?");
     $Query->execute(array($UserId));
 
     $PostsList = $Query->fetchAll(PDO::FETCH_GROUP | PDO::FETCH_ASSOC);
@@ -29,9 +31,11 @@ function GetPostList()
 function GetBlogPageList()
 {
     global $DB_CONFIG;
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
     $db = new PDO('mysql:host=' . $DB_CONFIG['host'] . ';dbname=' . $DB_CONFIG['database'].';charset=utf8', $DB_CONFIG['username'], $DB_CONFIG['password']);
-    $Query = $db->prepare("SELECT * from posts");
+    $Query = $db->prepare("SELECT * from Posts");
     $Query->execute();
 
     $PostsList = $Query->fetchAll(PDO::FETCH_GROUP | PDO::FETCH_ASSOC);

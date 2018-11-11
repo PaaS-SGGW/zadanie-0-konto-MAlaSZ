@@ -2,7 +2,9 @@
 require_once(substr(__DIR__,0,strrpos(__DIR__,'application')).'router.php');
 require_once Router::$Config['Language'];
 require_once Router::$Controllers['Post']['List'];
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
 <div class="w3-card-4 w3-margin w3-white">
     <div class="w3-container w3-teal">

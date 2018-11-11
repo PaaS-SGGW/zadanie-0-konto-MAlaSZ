@@ -2,7 +2,11 @@
 require_once(substr(__DIR__,0,strrpos(__DIR__,'application')).'router.php');
 require_once Router::$Config['Language'];
 require_once Router::$Models['User'];
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+
 
 $User = new User(
     (get_object_vars($_SESSION['User'])[Id]),
@@ -12,6 +16,8 @@ $User = new User(
     (get_object_vars($_SESSION['User'])[Salt]),
     (get_object_vars($_SESSION['User'])[Language])
 );
+foreach(get_object_vars($_SESSION['User']) as $t)
+    error_log($t);
 ?>
 <link href="https://cdn.quilljs.com/1.2.6/quill.snow.css" rel="stylesheet">
 <div id='A01' class="w3-card-4 w3-margin w3-white">
@@ -72,31 +78,31 @@ $User = new User(
     }
     function UpdateAccount() {
         if($('#FormName').val().length === 0) {
-            ShowError(<?php echo "'".Language::$LANG['UI']['Error']['CannotSendPost'] . "','" . Language::$LANG['UI']['Error']['EmptyName']."'"; ?>);
+            ShowError(<?php echo "'".Language::$LANG['UI']['Error']['CannotSendPost'] . "','" . Language::$LANG['UI']['Error']['EmptyName'].'a'."'"; ?>);
             return 0;
         }
         if($('#FormLogin').val().length === 0) {
-            ShowError(<?php echo "'".Language::$LANG['UI']['Error']['CannotSendPost'] . "','" . Language::$LANG['UI']['Error']['EmptyLogin']."'"; ?>);
+            ShowError(<?php echo "'".Language::$LANG['UI']['Error']['CannotSendPost'] . "','" . Language::$LANG['UI']['Error']['EmptyLogin'].'b'."'"; ?>);
             return;
         }
         if($('#FormLogin').val().length < 5) {
-            ShowError(<?php echo "'".Language::$LANG['UI']['Error']['CannotSendPost'] . "','" . Language::$LANG['UI']['Error']['LoginTooShort']."'"; ?>);
+            ShowError(<?php echo "'".Language::$LANG['UI']['Error']['CannotSendPost'] . "','" . Language::$LANG['UI']['Error']['LoginTooShort'].'c'."'"; ?>);
             return;
         }
         if($('#FormPassword').val().length === 0) {
-            ShowError(<?php echo "'".Language::$LANG['UI']['Error']['CannotSendPost'] . "','" . Language::$LANG['UI']['Error']['EmptyPassword']."'"; ?>);
+            ShowError(<?php echo "'".Language::$LANG['UI']['Error']['CannotSendPost'] . "','" . Language::$LANG['UI']['Error']['EmptyPassword'].'c'."'"; ?>);
             return;
         }
         if($('#FormPassword').val() < 8) {
-            ShowError(<?php echo "'".Language::$LANG['UI']['Error']['CannotSendPost'] . "','" . Language::$LANG['UI']['Error']['PasswordTooShort']."'"; ?>);
+            ShowError(<?php echo "'".Language::$LANG['UI']['Error']['CannotSendPost'] . "','" . Language::$LANG['UI']['Error']['PasswordTooShort'].'d'."'"; ?>);
             return;
         }
         if($('#FormConfirmPassword').val()!==$('#FormPassword').val()) {
-            ShowError(<?php echo "'".Language::$LANG['UI']['Error']['CannotSendPost'] . "','" . Language::$LANG['UI']['Error']['PasswordsDontMatch']."'"; ?>);
+            ShowError(<?php echo "'".Language::$LANG['UI']['Error']['CannotSendPost'] . "','" . Language::$LANG['UI']['Error']['PasswordsDontMatch'].'e'."'"; ?>);
             return;
         }
         if(!$('#FormLanguage').val()) {
-            ShowError(<?php echo "'".Language::$LANG['UI']['Error']['CannotSendPost'] . "','" . Language::$LANG['UI']['Error']['IncorrectLang']."'"; ?>);
+            ShowError(<?php echo "'".Language::$LANG['UI']['Error']['CannotSendPost'] . "','" . Language::$LANG['UI']['Error']['IncorrectLang'].'f'."'"; ?>);
             return;
         }
         request = $.ajax({
@@ -107,8 +113,8 @@ $User = new User(
                 url: "Update",
                 Name:$('#FormName').val(),
                 Login:$('#FormLogin').val(),
-                Password: CryptoJS.SHA512($('#FormPassword').val()).toString(),
-                ConfirmPassword: CryptoJS.SHA512($('#FormConfirmPassword').val()).toString(),
+                Password: $('#FormPassword').val().toString(),
+                ConfirmPassword: $('#FormConfirmPassword').val().toString(),
                 Language: $('#FormLanguage').val()
             }
         });

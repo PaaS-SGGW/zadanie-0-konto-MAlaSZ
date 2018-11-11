@@ -2,7 +2,7 @@
 //    if(file_exists('../../application/views/content/admin/'.$url.'.php'))
 //        include_once('../../application/views/content/admin/'.$url.'.php');
 //    else include_once('../404.html');
-
+require_once ('../../config/I18N/Language.php');
 
 function is_ajax() {
     return isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
@@ -10,7 +10,9 @@ function is_ajax() {
 
 if(is_ajax())
 {
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
     if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']==true)
     {
         require_once (substr(__DIR__,0,strrpos(__DIR__,'public')).'router.php');
@@ -172,8 +174,8 @@ if(is_ajax())
                                     return Language::$LANG['UI']['Error']['IncorrectLang'];
                                 if(file_exists(Router::$Controllers['User']['Update'])) {
                                     require_once (Router::$Controllers['User']['Update']);
-                                    $Salt = User::GenerateSalt(255);
-                                    $User = new User((get_object_vars($_SESSION['User'])[Id]),$_POST['Name'],$_POST['Login'], hash('sha512', $Password+$Salt),$Salt, $_POST['Language']);
+                                    $Salt = User::GenerateSalt(32);
+                                    $User = new User((get_object_vars($_SESSION['User'])[Id]),$_POST['Name'],$_POST['Login'], hash('sha512', $_POST['Password'].$Salt),$Salt, $_POST['Language']);
                                     echo Update($User);
                                 }
                             break;

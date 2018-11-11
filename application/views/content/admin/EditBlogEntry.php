@@ -3,7 +3,9 @@ require_once(substr(__DIR__,0,strrpos(__DIR__,'application')).'router.php');
 require_once Router::$Config['Language'];
 require_once Router::$Controllers['ConstantPost']['Read'];
 require_once Router::$Controllers['Image']['List'];
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 $Posts = GetConstantPosts();
 for($i=0; $i < count($Posts); $i++)

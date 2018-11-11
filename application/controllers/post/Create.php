@@ -24,7 +24,7 @@ session_start();
             $db = new PDO('mysql:host=' . $DB_CONFIG['host'] . ';dbname=' . $DB_CONFIG['database'].';charset=utf8', $DB_CONFIG['username'], $DB_CONFIG['password']);
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $sql = "INSERT INTO posts (Title, UserId, Content, Summary, Language, ImageId) VALUES (?,?,?,?,?,?)";
+            $sql = "INSERT INTO Posts (Title, UserId, Content, Summary, Language, ImageId) VALUES (?,?,?,?,?,?)";
             $Query = $db->prepare($sql);
             $Query->execute(array($Post->Title, $Post->UserID, $Post->Content, $Post->Summary, $Post->Language, $Post->ImageId));
             echo "OK";

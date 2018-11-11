@@ -38,10 +38,10 @@ class User
 
     public function VerifyPassword($Password)
     {
-        if(hash('sha512' , $Password+$this->Salt) === $this->Password)
+        if(hash('sha512', $Password.$this->Salt) == $this->Password) {
             return true;
+        }
         return false;
-
     }
 }
 

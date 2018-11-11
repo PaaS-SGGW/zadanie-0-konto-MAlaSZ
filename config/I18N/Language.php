@@ -1,7 +1,9 @@
 <?php
     include_once __DIR__.'/en-US/ui.php';
     include_once __DIR__.'/pl-PL/ui.php';
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
     class Language {
         public static $LANG;
         public static $OPTIONS;

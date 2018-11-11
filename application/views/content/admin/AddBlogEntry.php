@@ -1,7 +1,9 @@
 <?php
 require_once(substr(__DIR__,0,strrpos(__DIR__,'application')).'router.php');
 require_once Router::$Config['Language'];
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
 <link href="https://cdn.quilljs.com/1.2.6/quill.snow.css" rel="stylesheet">
 <div class="w3-card-4 w3-margin w3-white">

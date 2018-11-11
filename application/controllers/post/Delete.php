@@ -11,7 +11,7 @@ function Delete($Id){
         $db = new PDO('mysql:host=' . $DB_CONFIG['host'] . ';dbname=' . $DB_CONFIG['database'].';charset=utf8', $DB_CONFIG['username'], $DB_CONFIG['password']);
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "DELETE FROM posts WHERE Id=?";
+        $sql = "DELETE FROM Posts WHERE Id=?";
         $Query = $db->prepare($sql);
         $Query->execute(array($Id));
         echo "OK";
