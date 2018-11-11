@@ -1,9 +1,17 @@
 <?php
 
-    $DB_CONFIG['host'] = '127.0.0.1';
-    $DB_CONFIG['database'] = 'Vagabond';
-    $DB_CONFIG['username'] = 'root';
-    $DB_CONFIG['password'] = 'Pass@word1';
+    $url = getenv('JAWSDB_URL');
+    $dbparts = parse_url($url);
+
+    $hostname = $dbparts['host'];
+    $username = $dbparts['user'];
+    $password = $dbparts['pass'];
+    $database = ltrim($dbparts['path'],'/');
+
+    $DB_CONFIG['host'] = $hostname;
+    $DB_CONFIG['database'] = $database;
+    $DB_CONFIG['username'] = $username;
+    $DB_CONFIG['password'] = $password;
 
 
 ?>

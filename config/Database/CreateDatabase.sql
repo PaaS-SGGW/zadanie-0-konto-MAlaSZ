@@ -1,4 +1,4 @@
-CREATE TABLE `Vagabond`.`Users` (
+CREATE TABLE `Users` (
   `id` INT NOT NULL ,
   `Name` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL ,
   `Login` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL ,
@@ -8,7 +8,7 @@ CREATE TABLE `Vagabond`.`Users` (
   PRIMARY KEY (`id`)) ENGINE = InnoDB;
 
 
-CREATE TABLE `Vagabond`.`Posts` (
+CREATE TABLE `Posts` (
   `Id` INT NOT NULL AUTO_INCREMENT ,
   `Title` TINYTEXT NOT NULL ,
   `Date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ,
@@ -20,7 +20,7 @@ CREATE TABLE `Vagabond`.`Posts` (
   PRIMARY KEY (`Id`))
   ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_unicode_ci;
 
-CREATE TABLE `Vagabond`.`constantposts` (
+CREATE TABLE `constantposts` (
   `Id` INT NOT NULL AUTO_INCREMENT ,
   `Language` TINYTEXT NOT NULL ,
   `Type` TINYTEXT NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE `Vagabond`.`constantposts` (
   PRIMARY KEY (`Id`))
   ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_unicode_ci;
 
-CREATE TABLE `Vagabond`.`images` (
+CREATE TABLE `images` (
   `Id` INT NOT NULL AUTO_INCREMENT ,
   `Name` LONGTEXT NOT NULL ,
   `Path` LONGTEXT NOT NULL ,
@@ -39,7 +39,6 @@ CREATE TABLE `Vagabond`.`images` (
 
   Insert INTO constantposts values(1,'pl-PL','1','Testowy wpis','Treść testowego wpisu','1')
   UPDATE images Set Path='forest.jpg'
-  USE Vagabond;
 
   INSERT INTO images VALUES(1,'forest','forest.jpg');
   INSERT INTO Users VALUES(1,'Administrator','admin','740df87d92ef250275508e72b335a2760bf42704d33933bba08183622522a09c14558ea17e2cc9a7874a9524a20f0b5ad878feb37debfb8f616013d31b7c95f8','ujfR1mTsFpSyULnCL8CXIh2TdQe0451O','pl-PL');  
